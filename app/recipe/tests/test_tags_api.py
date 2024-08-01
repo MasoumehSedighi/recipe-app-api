@@ -60,8 +60,8 @@ class PrivateTagAPITests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_200_OK)
         self.assertEqual(res.data, serializer.data)
 
-    def test_tag_list_limites_to_user(self):
-        """Tag list of tag is limited to user."""
+    def test_tag_list_limited_to_user(self):
+        """Test list of tags is limited to authenticated user."""
         other_user = create_user(email="other@example.com")
         Tag.objects.create(user=other_user, name='Fruity')
         tag = Tag.objects.create(user=self.user, name='Comfort food')
